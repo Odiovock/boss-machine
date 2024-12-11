@@ -1,23 +1,35 @@
-let minionCounter = 999;
-let ideaCounter = 999;
-let meetingCounter = 999;
-
 function createElement (elementType, queryArgument) {
     if (elementType === "minions") {
         if (
             queryArgument.hasOwnProperty("name") &&
             queryArgument.hasOwnProperty("title") &&
-            queryArgument.hasOwnProperty("weakness") &&
+            queryArgument.hasOwnProperty("weaknesses") &&
             queryArgument.hasOwnProperty("salary")
         ) {
-            minionCounter++
-            return ({
-                id: minionCounter,
+            const newMinion = {
                 name: queryArgument.name,
                 title: queryArgument.title,
                 weakness: queryArgument.weakness,
                 salary: queryArgument.salary
-            });
+            }
+            return newMinion;
+        } else {
+            return false;
+        }
+    } else if (elementType === "ideas") {
+        if (
+            queryArgument.hasOwnProperty("name") &&
+            queryArgument.hasOwnProperty("description") &&
+            queryArgument.hasOwnProperty("weeklyRevenue") &&
+            queryArgument.hasOwnProperty("numWeeks")
+        ) {
+            const newIdea = {
+                name: queryArgument.name,
+                description: queryArgument.description,
+                weeklyRevenue: queryArgument.weeklyRevenue,
+                numWeeks: queryArgument.numWeeks
+            }
+            return newIdea
         } else {
             return false;
         }

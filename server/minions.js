@@ -20,10 +20,10 @@ minionsRouter.get("/", (req, res, next) => {
 minionsRouter.post("/", (req, res, next) => {
     const minionToAdd = createElement("minions", req.query);
     if (minionToAdd) {
-        db.addToDatabase(minionToAdd);
+        db.addToDatabase("minions", minionToAdd);
         res.status(201).send(minionToAdd);
     } else {
-        res.status(400).send("Wrong parameters");
+        res.status(400).send("Invalid parameters");
     }
 });
 
