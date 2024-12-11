@@ -33,6 +33,23 @@ function createElement (elementType, queryArgument) {
         } else {
             return false;
         }
+    } else if (elementType === "meetings") {
+        if (
+            queryArgument.hasOwnProperty("time") &&
+            queryArgument.hasOwnProperty("date") &&
+            queryArgument.hasOwnProperty("day") &&
+            queryArgument.hasOwnProperty("note")
+        ) {
+            const newMeeting = {
+                time: queryArgument.time,
+                date: queryArgument.date,
+                day: queryArgument.day,
+                note: queryArgument.note
+            }
+            return newMeeting;
+        } else {
+            return false;
+        }
     }
 }
 
