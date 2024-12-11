@@ -27,4 +27,18 @@ ideasRouter.post("/", (req, res, next) => {
     }
 });
 
+ideasRouter.get("/:ideaId", (req, res, next) => {
+    res.send(req.idea);
+});
+
+ideasRouter.put("/:ideaId", (req, res, next) => {
+    db.updateInstanceInDatabase("ideas", req.query);
+    res.send(db.getFromDatabaseById("ideas", req.idea.id));
+});
+
+ideasRouter.delete("/:ideaId", (req, res, next) => {
+    db.deleteFromDatabasebyId("ideas", req.idea.id);
+    res.status(204).send();
+});
+
 module.exports = ideasRouter;
